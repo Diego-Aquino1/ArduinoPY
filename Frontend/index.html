@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+</head>
+<script src="../static/main.js"></script>
+<body class="grid-container">
+    <header class="header">
+      <div class="header_main">
+        <div class="header_logo">
+          <p>LOGO</p>
+        </div>
+        <div class="header_menu">
+          <button id="menubutton">MENU</button>
+        </div>
+        <div class="header_searchbar">
+          <div class="search_container">
+            <i class='bx bx-search'></i>
+            <input type="text" placeholder="Buscar...">
+          </div>
+        </div>
+        <div class="header_extras">
+          <a class="extras_login" href="/carrito">CARRITO</a>
+          <a class="extras_login" href="login.php">Iniciar <br> Sesion</a>
+        </div>
+      </div>
+    </header>
+    <div class="menuleft" id="menu">
+      <button id="menubutton2">Salir</button>
+      <ul class="menuitems">
+        <li><a href="#"> Primera opcion</a></li>
+        <li><a href="#"> Segunda opcion</a></li>
+        <li><a href="#"> Tercera opcion</a></li>
+      </ul>
+    </div>
+    <main class="main">
+      <div class="titlemain">
+        <h2>Evaluación de la Experiencia de Usuario</h2>
+      </div>
+      <div class="tablecontainer">
+        <table>
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>VALOR</th>
+                  <th>FECHA</th>
+                  <th>HORA</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for item in data %}
+              <tr>
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.value }}</td>
+                  <td>{{ item.fecha }}</td>
+                  <td>{{ item.hora }}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      </div>
+    </main>
+    <nav class="nav">
+      <h1>NAV</h1>
+      <div id="time-filter">
+        <label>
+            <input type="radio" name="time-filter" value="days" checked>Días
+        </label>
+        <label>
+            <input type="radio" name="time-filter" value="weeks">Semanas
+        </label>
+        <label>
+            <input type="radio" name="time-filter" value="months">Meses
+        </label>
+    </div>
+    </nav>
+
+    <footer class="footer">
+      <h2>FOOTER</h2>
+    </footer>
+    
+</body>
+
+<script src="../Frontend/static/main.js"> </script>
+
+</html>

@@ -1,0 +1,307 @@
+:root{
+  /*Colors*/
+  --principal: #398ac4;
+  --secundary: #3CA1E8;
+  --colorfontmenus: white;
+}
+
+/* GENERAL */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+html
+{
+    height: 100%;
+}
+body
+{
+    background: rgb(200, 200, 200);
+    color: whitesmoke;
+    font-family: 'Mukta', sans-serif;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+
+.header_main{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--principal);
+  align-items: center;
+  justify-content: space-around;
+  color: var(--colorfontmenus);
+}
+
+.header_logo{
+  width: 10%;
+}
+
+.header_menu button{
+  border: none;
+  background: none;
+  font-size: 15px;
+  color: var(--colorfontmenus);
+  cursor: pointer;
+}
+
+.header_searchbar{
+  height: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_container{
+  display: flex;
+  background-color: var(--secundary);
+  width: 80%;
+  height: 50%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.search_container i{
+  font-size: 100%;
+  margin-left: 5%;
+}
+
+.search_container input{
+  width: 90%;
+  outline: none;
+  border: none;
+  background-color: var(--secundary);
+  margin-left: 20px;
+}
+
+.search_container input::placeholder{
+  color: white;
+  font-size: 100%;
+}
+
+.header_extras{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 30%;
+  height: 100%;
+}
+
+.extras_login{
+  width: 100px;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-decoration:none;
+  cursor: pointer;
+  color: var(--colorfontmenus);
+}
+
+.extras_login:hover{
+  background-color: var(--secundary);
+  color: black;
+}
+
+/* Menu izquierda */
+
+.menuleft{
+  top:0;
+  background-color: rgb(230, 230, 230);
+  position: fixed;
+  height: 100%;
+  width: 25%;
+  left: -25%;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuleft.open{
+  left: 0;
+}
+
+.menuleft button{
+  background-color: var(--principal);
+  color: white;
+  width: 50%;
+  border-radius: 15px;
+  height: 50px; 
+  border: none;
+  cursor: pointer;
+}
+
+.menuleft button:hover{
+  background-color: var(--secundary);
+}
+
+.menuitems{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* CAMBIAR MARGIN*/
+
+.menuitems li{
+  margin: 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.menuitems li a{
+  text-decoration: none;
+  color: var(--principal);
+}
+
+
+/* GRID */
+
+.grid-container
+{
+    display: grid;
+    gap: 10px;
+    grid-template: 
+    "header"  70px
+    "nav"     60px
+    "main"    auto
+    "footer"  70px;
+}
+
+.header
+{
+  grid-area: header;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.main
+{
+  grid-area: main;
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+.nav
+{
+  grid-area: nav;
+  background-color: var(--secundary);
+  border-radius: 20px;
+}
+
+.aside
+{
+  grid-area: aside;
+  background-color: black;
+  border-radius: 20px;
+}
+
+.footer
+{
+  grid-area: footer;
+  background-color: var(--principal);
+  border-radius: 0px;
+}
+
+@media (min-width:600px)
+{
+  .grid-container
+  {
+    grid-template: 
+    "header header"  75px
+    "nav    nav"     40px
+    "main   main"   auto
+    "footer footer"  60px /
+    auto    200px;
+  }
+
+  .tablecontainer table
+  {
+    width: 90%;
+  }
+
+}
+
+@media (min-width:900px)
+{
+  .grid-container
+  {
+    grid-template: 
+    "header header  header"  75px
+    "nav    main    main"   auto
+    "footer footer  footer"  70px /
+    400px   auto    200px;
+  }
+
+  .nav
+  {
+    margin-left: 100px;
+  }
+  .main
+  {
+    margin-right: 100px;
+  }
+}
+
+.titlemain
+{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 20%;
+}
+
+.titlemain h2
+{
+  color: #201d1d;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8em;
+}
+
+.tablecontainer
+{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #201d1d;
+}
+
+.tablecontainer table
+{
+  width: 80%;
+}
+
+
+.tablecontainer th
+{
+  color: red;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: large;
+  text-align: center;
+}
+
+.tablecontainer td
+{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: medium;
+  text-align: center;
+}
+
