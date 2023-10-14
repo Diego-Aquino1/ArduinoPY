@@ -5,9 +5,19 @@ class TaskModel:
         self.mysql_pool = MySQLPool()
 
 
-    # Funcion para obtener todos los usuarios
     def get_evaluate(self):
         rv = self.mysql_pool.execute('SELECT * from evaluate')
+        data = []
+        content = {}
+        for result in rv:
+            content = {'id': result[0], 'value': result[1], 'fecha': result[2], 'hora': result[3]}
+            data.append(content)
+            content = {}
+        return data
+
+    def get_evaluate_month(self, selectedMonth):
+        params = {'selectedMonth' : selectedMonth}      
+        rv = self.mysql_pool.execute("SELECT * FROM evaluate WHERE DATE_FORMAT(fecha, '%Y-%m') = %(selectedMonth)s", params)
         data = []
         content = {}
         for result in rv:

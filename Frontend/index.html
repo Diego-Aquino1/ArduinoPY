@@ -53,38 +53,37 @@
           </thead>
           <tbody>
               {% for item in data %}
-              <tr>
-                  <td>{{ item.id }}</td>
-                  <td>{{ item.value }}</td>
-                  <td>{{ item.fecha }}</td>
-                  <td>{{ item.hora }}</td>
-              </tr>
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.value }}</td>
+                    <td>{{ item.fecha }}</td>
+                    <td>{{ item.hora }}</td>
+                </tr>
               {% endfor %}
           </tbody>
       </table>
       </div>
     </main>
     <nav class="nav">
-      <h1>NAV</h1>
-      <div id="time-filter">
-        <label>
-            <input type="radio" name="time-filter" value="days" checked>Días
-        </label>
-        <label>
-            <input type="radio" name="time-filter" value="weeks">Semanas
-        </label>
-        <label>
-            <input type="radio" name="time-filter" value="months">Meses
-        </label>
-    </div>
+      <div class="titlenav">
+        <h1>Filtrar</h1>
+      </div>
+      <form class="timefilter" id="time-filter" action="/month" method="GET">
+        <label for="date-input">Seleccionar día:</label>
+        <input type="date" id="date-input">
+        <label for="week-input">Seleccionar semana:</label>
+        <input type="week" id="week-input">
+        <label for="month-input">Seleccionar mes:</label>
+        <input type="month" id="month-input" name="month-input" value="{{ selectedMonth_ }}">
+        <button class="filtrarbtn" type="submit">Filtrar</button>
+    </form>
     </nav>
 
     <footer class="footer">
       <h2>FOOTER</h2>
     </footer>
     
+  <script src="../static/month.js"></script>
 </body>
-
-<script src="../Frontend/static/main.js"> </script>
 
 </html>

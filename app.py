@@ -54,6 +54,13 @@ def authenticate_user(username, password):
 
 ###################### RUTAS ########################
 
+@app.route('/month', methods=['GET'])
+def evaluateMonth():
+    selectedMonth = request.args.get('month-input')
+    print(selectedMonth)
+    data_ = model.get_evaluate_month(selectedMonth)
+    return render_template('/index.html', data=data_, selectedMonth_=selectedMonth)
+
 @app.route('/')
 def evaluate():
     data_ = model.get_evaluate()
