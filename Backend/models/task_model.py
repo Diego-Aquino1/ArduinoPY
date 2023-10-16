@@ -25,6 +25,17 @@ class TaskModel:
             data.append(content)
             content = {}
         return data
+    
+    def get_evaluate_day(self, selectedDay):
+        params = {'selectedDay' : selectedDay}      
+        rv = self.mysql_pool.execute("SELECT * FROM evaluate WHERE DATE(fecha) = %(selectedDay)s", params)
+        data = []
+        content = {}
+        for result in rv:
+            content = {'id': result[0], 'value': result[1], 'fecha': result[2], 'hora': result[3]}
+            data.append(content)
+            content = {}
+        return data
 
 ################### Actividad ################################
     # Funcion para obtener una actividad por su ID

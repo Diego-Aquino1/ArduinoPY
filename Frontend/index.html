@@ -17,14 +17,8 @@
         <div class="header_menu">
           <button id="menubutton">MENU</button>
         </div>
-        <div class="header_searchbar">
-          <div class="search_container">
-            <i class='bx bx-search'></i>
-            <input type="text" placeholder="Buscar...">
-          </div>
-        </div>
         <div class="header_extras">
-          <a class="extras_login" href="/carrito">CARRITO</a>
+          <a class="extras_login" href="/carrito">Logout</a>
           <a class="extras_login" href="login.php">Iniciar <br> Sesion</a>
         </div>
       </div>
@@ -63,19 +57,41 @@
           </tbody>
       </table>
       </div>
+      <div class="resumedata">
+        <div class="cardd">
+          <div class="resumegood">
+            Total good:
+          </div>
+        </div>
+        <div class="cardd">
+          <div class="resumeneutral">
+            Total neutral:
+          </div>
+        </div>
+        <div class="cardd">
+          <div class="resumebad">
+            Total bad:
+          </div>
+        </div>
+      </div>
     </main>
     <nav class="nav">
       <div class="titlenav">
         <h1>Filtrar</h1>
       </div>
-      <form class="timefilter" id="time-filter" action="/month" method="GET">
+      <form class="timefilter" id="time-filter" action="/evaluate" method="GET">
         <label for="date-input">Seleccionar día:</label>
-        <input type="date" id="date-input">
+        <input type="date" class="inputfilter" id="date-input" name="selected-day">
+    
         <label for="week-input">Seleccionar semana:</label>
-        <input type="week" id="week-input">
+        <input type="week" class="inputfilter" id="week-input" name="selected-week">
+    
         <label for="month-input">Seleccionar mes:</label>
-        <input type="month" id="month-input" name="month-input" value="{{ selectedMonth_ }}">
+        <input type="month" class="inputfilter" id="month-input" name="selected-month">
+    
         <button class="filtrarbtn" type="submit">Filtrar</button>
+
+        <a class="filtrarbtna" href="/">Mostrar todo</a>
     </form>
     </nav>
 

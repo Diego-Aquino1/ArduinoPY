@@ -61,8 +61,36 @@ def evaluateMonth():
     data_ = model.get_evaluate_month(selectedMonth)
     return render_template('/index.html', data=data_, selectedMonth_=selectedMonth)
 
-@app.route('/')
+@app.route('/day', methods=['GET'])
+def evaluateDay():
+    selectedDay = request.args.get('day-input')
+    print(selectedDay)
+    data_ = model.get_evaluate_day(selectedDay)
+    return render_template('/index.html', data=data_, selectedDay_=selectedDay)
+
+@app.route('/week', methods=['GET'])
+def evaluateWeek():
+    selectedWeek = request.args.get('selected-week')
+    print(selectedWeek)
+
+@app.route('/evaluate', methods=['GET'])
 def evaluate():
+    selectedMonth = request.args.get('selected-month')
+    selectedDay = request.args.get('selected-day')
+
+    if selectedMonth:
+        data = model.get_evaluate_month(selectedMonth)
+
+    elif selectedDay:
+        data = model.get_evaluate_day(selectedDay)
+        
+    else:
+        data = []
+
+    return render_template('/index.html', data=data)
+
+@app.route('/')
+def evaluatee():
     data_ = model.get_evaluate()
     return render_template('/index.html', data=data_)
 
@@ -88,6 +116,8 @@ def dashboard():
     
     # Redirigir a la página de inicio de sesión si no hay sesión válida
     return redirect('/login')
+
+
 
 
 @app.route('/login', methods=['GET', 'POST'])

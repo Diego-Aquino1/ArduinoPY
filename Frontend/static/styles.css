@@ -1,8 +1,10 @@
+
+
 :root{
-  /*Colors*/
-  --principal: #398ac4;
-  --secundary: #3CA1E8;
+  --principal: hsl(0, 0%, 34%) ;
+  --secundary: rgba(56, 27, 10, 0.692);
   --colorfontmenus: white;
+  --hoverbtn: skyblue;
 }
 
 /* GENERAL */
@@ -16,7 +18,7 @@ html
 body
 {
     background: rgb(200, 200, 200);
-    color: whitesmoke;
+    color: black;
     font-family: 'Mukta', sans-serif;
     min-height: 100%;
     margin: 0;
@@ -33,6 +35,7 @@ body
   align-items: center;
   justify-content: space-around;
   color: var(--colorfontmenus);
+  
 }
 
 .header_logo{
@@ -102,10 +105,11 @@ body
   text-decoration:none;
   cursor: pointer;
   color: var(--colorfontmenus);
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
 }
 
 .extras_login:hover{
-  background-color: var(--secundary);
+  background-color: var(--hoverbtn);
   color: black;
 }
 
@@ -140,7 +144,7 @@ body
 }
 
 .menuleft button:hover{
-  background-color: var(--secundary);
+  background-color: var(--hoverbtn);
 }
 
 .menuitems{
@@ -193,6 +197,8 @@ body
   grid-area: main;
   background-color: whitesmoke;
   border-radius: 20px;
+  position: relative;
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
 }
 
 .nav
@@ -200,6 +206,11 @@ body
   grid-area: nav;
   background-color: var(--secundary);
   border-radius: 20px;
+  color: var(--colorfontmenus);
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .aside
@@ -214,6 +225,7 @@ body
   grid-area: footer;
   background-color: var(--principal);
   border-radius: 0px;
+  text-align: center;
 }
 
 @media (min-width:600px)
@@ -277,10 +289,12 @@ body
 {
   text-align: center;
   font-family: 'Poppins', sans-serif;
+  height: auto;
 }
 
 .timefilter
 {
+  height: 80%;
   gap: 30px;
   display: flex;
   flex-direction: column;
@@ -291,11 +305,12 @@ body
 }
 
 
-#month-input {
+
+.inputfilter {
   position: relative;
   text-align: center;
-  font-size: 20px; /* Tamaño de fuente más grande */
-  width: 200px; /* Ancho más grande */
+  font-size: 20px;
+  width: 200px;
   height: 40px;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
@@ -303,9 +318,10 @@ body
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 10px;
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
 }
 
-#month-input::-webkit-calendar-picker-indicator {
+.inputfilter::-webkit-calendar-picker-indicator {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -329,16 +345,20 @@ body
 
 .tablecontainer table
 {
-  width: 80%;
+  width: 70%;
 }
 
+.tablecontainer thead
+{
+  height: 80px;
+}
 
 .tablecontainer th
 {
-  color: red;
+  color: rgb(0, 0, 0);
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: large;
+  font-size: x-large;
   text-align: center;
 }
 
@@ -356,10 +376,55 @@ body
   border-radius: 15px;
   text-decoration:none;
   cursor: pointer;
+  border: 1px solid #ccc;
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+  font-size: large;
+}
+
+.filtrarbtna{
+  width: 150px;
+  height: 50px;
+  border-radius: 15px;
+  text-decoration:none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+}
+
+.filtrarbtna:hover{
+  background-color: var(--hoverbtn);
   color: black;
 }
 
 .filtrarbtn:hover{
-  background-color: skyblue;
+  background-color: var(--hoverbtn);
   color: black;
+}
+
+.resumedata
+{
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.cardd
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 50px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  margin: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-size: large;
 }
