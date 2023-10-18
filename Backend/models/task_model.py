@@ -14,6 +14,33 @@ class TaskModel:
             data.append(content)
             content = {}
         return data
+    
+    def get_evaluate_count(self):
+        sql = """
+        SELECT 
+            COUNT(*) AS total_registros,
+            SUM(CASE WHEN value = 'good' THEN 1 ELSE 0 END) AS good_count,
+            SUM(CASE WHEN value = 'neutral' THEN 1 ELSE 0 END) AS neutral_count,
+            SUM(CASE WHEN value = 'bad' THEN 1 ELSE 0 END) AS bad_count 
+        FROM evaluate
+        """
+        
+        result = self.mysql_pool.execute(sql)
+
+        if result:
+            result_dict = {
+                'total_registros': result[0][0],
+                'good_count': result[0][1],
+                'neutral_count': result[0][2],
+                'bad_count': result[0][3]
+            }
+            return result_dict
+        return {
+            'total_registros': 0,
+            'good_count': 0,
+            'neutral_count': 0,
+            'bad_count': 0
+        }
 
     def get_evaluate_month(self, selectedMonth):
         params = {'selectedMonth' : selectedMonth}      
@@ -26,6 +53,35 @@ class TaskModel:
             content = {}
         return data
     
+    def get_evaluate_month_count(self, selectedMonth):   
+        params = {'selectedMonth': selectedMonth}
+        sql = """
+        SELECT 
+            COUNT(*) AS total_registros,
+            SUM(CASE WHEN value = 'good' THEN 1 ELSE 0 END) AS good_count,
+            SUM(CASE WHEN value = 'neutral' THEN 1 ELSE 0 END) AS neutral_count,
+            SUM(CASE WHEN value = 'bad' THEN 1 ELSE 0 END) AS bad_count 
+        FROM evaluate
+        WHERE DATE_FORMAT(fecha, '%Y-%m') = %(selectedMonth)s
+        """
+        
+        result = self.mysql_pool.execute(sql, params)
+
+        if result:
+            result_dict = {
+                'total_registros': result[0][0],
+                'good_count': result[0][1],
+                'neutral_count': result[0][2],
+                'bad_count': result[0][3]
+            }
+            return result_dict
+        return {
+            'total_registros': 0,
+            'good_count': 0,
+            'neutral_count': 0,
+            'bad_count': 0
+        }
+    
     def get_evaluate_day(self, selectedDay):
         params = {'selectedDay' : selectedDay}      
         rv = self.mysql_pool.execute("SELECT * FROM evaluate WHERE DATE(fecha) = %(selectedDay)s", params)
@@ -37,7 +93,37 @@ class TaskModel:
             content = {}
         return data
 
-################### Actividad ################################
+    
+    def get_evaluate_day_count(self, selectedDay):   
+        params = {'selectedDay': selectedDay}
+        sql = """
+        SELECT 
+            COUNT(*) AS total_registros,
+            SUM(CASE WHEN value = 'good' THEN 1 ELSE 0 END) AS good_count,
+            SUM(CASE WHEN value = 'neutral' THEN 1 ELSE 0 END) AS neutral_count,
+            SUM(CASE WHEN value = 'bad' THEN 1 ELSE 0 END) AS bad_count 
+        FROM evaluate
+        WHERE DATE(fecha) = %(selectedDay)s
+        """
+        
+        result = self.mysql_pool.execute(sql, params)
+
+        if result:
+            result_dict = {
+                'total_registros': result[0][0],
+                'good_count': result[0][1],
+                'neutral_count': result[0][2],
+                'bad_count': result[0][3]
+            }
+            return result_dict
+        return {
+            'total_registros': 0,
+            'good_count': 0,
+            'neutral_count': 0,
+            'bad_count': 0
+        }
+    
+    ################### Actividad ################################
     # Funcion para obtener una actividad por su ID
     def get_actividad(self, id_act):    
         params = {'id_act' : id_act}      

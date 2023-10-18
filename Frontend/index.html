@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST</title>
+    <title>Evaluaciones</title>
     <link rel="stylesheet" type="text/css" href="static/styles.css">
 </head>
 <script src="../static/main.js"></script>
@@ -60,17 +60,17 @@
       <div class="resumedata">
         <div class="cardd">
           <div class="resumegood">
-            Total good:
+            Total good: {{ _evaluation_counts.good_count }}
           </div>
         </div>
         <div class="cardd">
           <div class="resumeneutral">
-            Total neutral:
+            Total neutral: {{ _evaluation_counts.neutral_count }}
           </div>
         </div>
         <div class="cardd">
           <div class="resumebad">
-            Total bad:
+            Total bad: {{ _evaluation_counts.bad_count }}
           </div>
         </div>
       </div>

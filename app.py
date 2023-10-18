@@ -80,19 +80,24 @@ def evaluate():
 
     if selectedMonth:
         data = model.get_evaluate_month(selectedMonth)
+        evaluation_counts = model.get_evaluate_month_count(selectedMonth)
 
     elif selectedDay:
         data = model.get_evaluate_day(selectedDay)
-        
+        evaluation_counts = model.get_evaluate_day_count(selectedDay)
     else:
         data = []
 
-    return render_template('/index.html', data=data)
+    return render_template('/index.html', data=data, _evaluation_counts=evaluation_counts)
 
 @app.route('/')
 def evaluatee():
     data_ = model.get_evaluate()
-    return render_template('/index.html', data=data_)
+    evaluation_counts = model.get_evaluate_count()
+    print(evaluation_counts['good_count'])
+    print(evaluation_counts['neutral_count'])
+    print(evaluation_counts['bad_count'])
+    return render_template('/index.html', data=data_, _evaluation_counts=evaluation_counts)
 
 
 @app.route('/dashboard')
@@ -228,5 +233,4 @@ def logout():
     # Redirigir al usuario a la página de inicio
     return render_template('home/index.html')
 
-if __name__ == "__main__":
-      app.run(debug=True)
+if __name__ == "__main__":      app.run(debug=True)
